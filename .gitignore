@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build output
+.output/
+.wrangler/
+.tanstack/
+dist/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
