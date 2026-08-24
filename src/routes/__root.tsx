@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -84,9 +85,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Industrial processing equipment manufacturer and engineering solutions company for dairy, food, beverage, pharma and chemical plants.",
       },
       { name: "author", content: "Prince Group of Business" },
+      { name: "robots", content: "index, follow" },
       { property: "og:site_name", content: "Prince Group of Business" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      // ── Google Search Console Verification ──────────────────────────────
+      // IMPORTANT: Replace the content value below with the actual verification
+      // token from Google Search Console → Settings → Ownership Verification
+      // → HTML Tag method. Do not invent or guess this value.
+      // Once added, uncomment the following line:
+      // { name: "google-site-verification", content: "YOUR_GSC_VERIFICATION_TOKEN_HERE" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -96,7 +104,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap",
       },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      {
+        rel: "icon",
+        href: "/favicon.png?v=2",
+        type: "image/png",
+      },
     ],
   }),
 

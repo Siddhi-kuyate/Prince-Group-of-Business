@@ -1,13 +1,14 @@
 import heroOne from "@/assets/hero-1.jpg";
 import heroTwo from "@/assets/hero-2.jpg";
 import heroThree from "@/assets/hero-3.jpg";
-import heroFour from "@/assets/hero-4.jpg";
+
 import prodHomogenizer from "@/assets/prod-homogenizer.jpg";
 import prodPasteurizer from "@/assets/prod-pasteurizer.jpg";
 import prodTank from "@/assets/prod-tank.jpg";
 import prodSeparator from "@/assets/prod-separator.jpg";
 import prodCip from "@/assets/prod-cip.jpg";
 import prodPumps from "@/assets/prod-pumps.jpg";
+
 import indDairy from "@/assets/ind-dairy.jpg";
 import indFood from "@/assets/ind-food.jpg";
 import indBeverage from "@/assets/ind-beverage.jpg";
@@ -16,78 +17,169 @@ import indChemical from "@/assets/ind-chemical.jpg";
 import indTextile from "@/assets/ind-textile.jpg";
 import indConstruction from "@/assets/ind-construction.jpg";
 
+/* =========================================================
+   COMPANY
+   ========================================================= */
+
+export const siteUrl = "https://www.princegroupbusiness.in";
+
 export const company = {
   name: "Prince Group of Business",
+
   tagline: "Crowning Success, Building Legacies.",
-  phone: "+91 98765 43210",
-  phoneHref: "tel:+919876543210",
-  whatsapp: "919876543210",
-  email: "info@princegroupofbusiness.com",
-  address: "Plot No. 24, MIDC Industrial Area, Pune, Maharashtra 411019, India",
-  hours: "Mon – Sat · 9:00 AM – 7:00 PM IST",
-  mapQuery: "MIDC Industrial Area Pune Maharashtra India",
+
+  email: "sales.pgbusiness@gmail.com",
+
+  phone: "+91 82376 05344",
+
+  phoneHref: "tel:+918237605344",
+
+  whatsapp: "918237605344",
+
+  address:
+    "B-304, 3rd Floor, Jai Ganesh Vardhasht Society, Gandhi Nagar Road, Pimpri, Pune, Maharashtra, India",
+
+  mapQuery:
+    "B-304, 3rd Floor, Jai Ganesh Vardhasht Society, Gandhi Nagar Road, Pimpri, Pune, Maharashtra, India",
+
+  mapDirectLink:
+    "https://www.google.com/maps/search/?api=1&query=B-304%2C+3rd+Floor%2C+Jai+Ganesh+Vardhasht+Society%2C+Gandhi+Nagar+Road%2C+Pimpri%2C+Pune%2C+Maharashtra%2C+India",
+
+  hours: "Monday - Saturday: 9:00 AM - 6:00 PM IST",
 };
 
-export const whatsappLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
-  "Hello Prince Group of Business, I would like to enquire about your processing equipment.",
+/* =========================================================
+   WHATSAPP
+   ========================================================= */
+
+export const whatsappLink = `https://wa.me/${
+  company.whatsapp
+}?text=${encodeURIComponent(
+  "Hello Prince Group of Business, I would like to enquire about your products and services.",
 )}`;
 
-export const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${company.email}&su=${encodeURIComponent(
+/* =========================================================
+   EMAIL
+   ========================================================= */
+
+export const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+  company.email,
+)}&su=${encodeURIComponent(
   "Enquiry — Prince Group of Business",
 )}`;
 
+/* =========================================================
+   SOCIAL MEDIA
+   ========================================================= */
+
+export const socialLinks = {
+  instagram: "https://www.instagram.com/pg_businesses/",
+
+  linkedin: "https://www.linkedin.com/company/prince-group-of-business/",
+
+  facebook: "https://www.facebook.com/share/1DMrPZSBBP/",
+};
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Products", href: "#products" },
-  { label: "Industries", href: "#industries" },
-  { label: "Services", href: "#services" },
-  { label: "Blogs", href: "#blogs" },
-  { label: "Careers", href: "#careers" },
-  { label: "Contact", href: "#contact" },
+  {
+    label: "Industries",
+    href: "/industries",
+  },
+  {
+    label: "Solutions",
+    href: "/solutions",
+  },
+  {
+    label: "Products",
+    href: "/products",
+  },
+  {
+    label: "Blogs",
+    href: "/blogs",
+  },
+  {
+    label: "About",
+    href: "/about",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
 ];
+
+/* =========================================================
+   HERO SLIDES
+   ========================================================= */
 
 export const heroSlides = [
   {
     image: heroOne,
-    alt: "Stainless steel industrial processing plant with polished pipework and tanks",
-    kicker: "Industrial Processing Equipment",
-    title: "Engineering Excellence for Industrial Growth",
+    alt: "Stainless steel industrial processing plant",
+    kicker: "PGB ENGINEERING SOLUTIONS",
+    title: "Knowledge in Action",
     subtitle:
-      "Turnkey process plants, precision-built equipment and engineering support for manufacturers who cannot afford downtime.",
+      "Precision-engineered fluid handling and process solutions for every industry.",
+    buttonText: "View Industries",
+    buttonHref: "/industries",
   },
+
   {
     image: heroTwo,
-    alt: "Dairy processing facility with milk storage tanks and pasteurizer line",
-    kicker: "Dairy & Food",
-    title: "Complete Dairy & Food Processing Solutions",
+    alt: "Dairy processing facility",
+    kicker: "ENGINEERING THROUGH EVERY STAGE",
+    title: "Service That Delivers",
     subtitle:
-      "From receiving dock to packaging line — pasteurizers, separators, CIP systems and storage engineered for hygienic production.",
+      "From equipment selection and process design to commissioning and lifecycle support.",
+    buttonText: "View Services",
+    buttonHref: "/solutions",
   },
+
   {
     image: heroThree,
-    alt: "Pharmaceutical and beverage processing cleanroom with stainless steel reactors",
-    kicker: "Pharma & Beverage",
-    title: "Innovative Pharmaceutical & Beverage Processing Equipment",
+    alt: "Pharmaceutical and beverage processing equipment",
+    kicker: "BUILT AROUND YOUR PROCESS",
+    title: "Products That Perform",
     subtitle:
-      "GMP-conscious design, validated materials and documentation packages built for regulated production environments.",
-  },
-  {
-    image: heroFour,
-    alt: "Engineers reviewing fabrication drawings inside a heavy manufacturing workshop",
-    kicker: "Manufacturing Partner",
-    title: "Trusted Industrial Partner for Manufacturing Excellence",
-    subtitle:
-      "In-house fabrication, automation and lifetime service support from a team that stays on the project after commissioning.",
+      "Hygienic processing systems engineered for repeatable output, uptime, and efficiency.",
+    buttonText: "View Products",
+    buttonHref: "/products",
   },
 ];
 
+/* =========================================================
+   STATS
+   ========================================================= */
+
 export const stats = [
-  { value: 25, suffix: "+", label: "Years of Experience" },
-  { value: 1200, suffix: "+", label: "Projects Completed" },
-  { value: 850, suffix: "+", label: "Happy Clients" },
-  { value: 12, suffix: "+", label: "Industries Served" },
+  {
+    value: 25,
+    suffix: "+",
+    label: "Years of Experience",
+  },
+  {
+    value: 1200,
+    suffix: "+",
+    label: "Projects Completed",
+  },
+  {
+    value: 850,
+    suffix: "+",
+    label: "Happy Clients",
+  },
+  {
+    value: 12,
+    suffix: "+",
+    label: "Industries Served",
+  },
 ];
+
+/* =========================================================
+   SOLUTIONS
+   ========================================================= */
 
 export const solutions = [
   {
@@ -131,6 +223,10 @@ export const solutions = [
     text: "Preventive maintenance contracts, genuine spares and rapid breakdown response nationwide.",
   },
 ];
+
+/* =========================================================
+   PRODUCTS
+   ========================================================= */
 
 export const products = [
   {
@@ -185,15 +281,51 @@ export const products = [
   },
 ];
 
+/* =========================================================
+   INDUSTRIES
+   ========================================================= */
+
 export const industries = [
-  { name: "Dairy", image: indDairy, text: "Milk, cheese, butter and paneer plants" },
-  { name: "Food", image: indFood, text: "Sauces, ready meals and bakery lines" },
-  { name: "Beverage", image: indBeverage, text: "Juice, water and carbonated drinks" },
-  { name: "Pharmaceutical", image: indPharma, text: "API, formulation and cleanroom utilities" },
-  { name: "Chemical", image: indChemical, text: "Specialty and process chemical plants" },
-  { name: "Textile", image: indTextile, text: "Dyeing, finishing and utility systems" },
-  { name: "Construction", image: indConstruction, text: "Structural fabrication and site services" },
+  {
+    name: "Dairy",
+    image: indDairy,
+    text: "Milk, cheese, butter and paneer plants",
+  },
+  {
+    name: "Food",
+    image: indFood,
+    text: "Sauces, ready meals and bakery lines",
+  },
+  {
+    name: "Beverage",
+    image: indBeverage,
+    text: "Juice, water and carbonated drinks",
+  },
+  {
+    name: "Pharmaceutical",
+    image: indPharma,
+    text: "API, formulation and cleanroom utilities",
+  },
+  {
+    name: "Chemical",
+    image: indChemical,
+    text: "Specialty and process chemical plants",
+  },
+  {
+    name: "Textile",
+    image: indTextile,
+    text: "Dyeing, finishing and utility systems",
+  },
+  {
+    name: "Construction",
+    image: indConstruction,
+    text: "Structural fabrication and site services",
+  },
 ];
+
+/* =========================================================
+   ADVANTAGES
+   ========================================================= */
 
 export const advantages = [
   {
@@ -227,6 +359,10 @@ export const advantages = [
     text: "AMC programmes, genuine spares inventory and engineers on call to keep your line running.",
   },
 ];
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
 
 export const testimonials = [
   {

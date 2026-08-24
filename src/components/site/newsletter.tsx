@@ -1,32 +1,61 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "motion/react";
-import { MailCheck } from "lucide-react";
+import { MessageSquareText } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
 
-const emailSchema = z.string().trim().email("Enter a valid email address").max(255);
+const feedbackSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(2, "Please enter your name")
+    .max(100),
+
+  email: z
+    .string()
+    .trim()
+    .email("Enter a valid email address")
+    .max(255),
+
+  feedback: z
+    .string()
+    .trim()
+    .min(10, "Please enter at least 10 characters")
+    .max(1000),
+});
 
 export function Newsletter() {
-  const [consent, setConsent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const form = event.currentTarget;
-    const value = new FormData(form).get("email");
-    const parsed = emailSchema.safeParse(value);
+
+    const data = Object.fromEntries(
+      new FormData(form),
+    );
+
+    const parsed = feedbackSchema.safeParse(data);
 
     if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? "Enter a valid email address");
-      return;
-    }
-    if (!consent) {
-      toast.error("Please confirm you agree to receive product updates.");
+      toast.error(
+        parsed.error.issues[0]?.message ??
+          "Please check your information",
+      );
       return;
     }
 
-    form.reset();
-    setConsent(false);
-    toast.success("You're subscribed — welcome to Prince Group of Business updates.");
+    setSubmitting(true);
+
+    setTimeout(() => {
+      setSubmitting(false);
+      form.reset();
+
+      toast.success(
+        "Thank you for your feedback!",
+      );
+    }, 700);
   };
 
   return (
@@ -35,55 +64,115 @@ export function Newsletter() {
         <motion.div
           initial={{ opacity: 0, y: 26 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-3xl px-6 py-12 text-center sm:px-12"
-          style={{ background: "var(--gradient-primary)" }}
+          viewport={{
+            once: true,
+            margin: "-80px",
+          }}
+          transition={{
+            duration: 0.55,
+            ease: "easeOut",
+          }}
+          className="relative overflow-hidden rounded-3xl px-6 py-12 sm:px-12"
+          style={{
+            background: "#071B33",
+          }}
         >
-          <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-white/15 text-primary-foreground">
-            <MailCheck className="h-7 w-7" />
+          {/* Icon */}
+          <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-white/15 text-white">
+            <MessageSquareText className="h-7 w-7" />
           </span>
-          <h2 className="mt-6 text-2xl font-bold text-primary-foreground sm:text-3xl">
-            Stay Connected with Prince Group of Business
+
+          {/* Heading */}
+          <h2 className="mt-6 text-center text-2xl font-bold text-white sm:text-3xl">
+            Share Your Feedback
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-primary-foreground/85">
-            Product launches, engineering insights and maintenance tips — a few times a year, never spam.
+
+          {/* Description */}
+          <p className="mx-auto mt-3 max-w-xl text-center text-sm text-white/85">
+            Your feedback helps Prince Group of Business improve our
+            products, services and customer experience.
           </p>
 
+          {/* Feedback Form */}
           <form
             onSubmit={onSubmit}
-            className="mx-auto mt-8 flex w-full max-w-lg flex-col gap-3 sm:flex-row"
+            className="mx-auto mt-8 grid w-full max-w-2xl gap-4"
             noValidate
           >
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              name="email"
-              type="email"
-              required
-              maxLength={255}
-              placeholder="you@company.com"
-              className="w-full rounded-full border border-white/30 bg-white/15 px-5 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/60 focus:border-white focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="shrink-0 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
-            >
-              Subscribe
-            </button>
-          </form>
+            {/* Name + Email */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="feedback-name"
+                  className="text-xs font-medium text-white/80"
+                >
+                  Your Name
+                </label>
 
-          <label className="mx-auto mt-4 flex max-w-lg cursor-pointer items-start justify-center gap-2 text-left text-xs text-primary-foreground/80">
-            <input
-              type="checkbox"
-              checked={consent}
-              onChange={(e) => setConsent(e.target.checked)}
-              className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/40"
-            />
-            I agree to receive product updates and marketing emails from Prince Group of Business.
-          </label>
+                <input
+                  id="feedback-name"
+                  name="name"
+                  type="text"
+                  required
+                  maxLength={100}
+                  placeholder="Your name"
+                  className="mt-2 w-full rounded-xl border border-white/30 bg-white/15 px-5 py-3 text-sm text-white placeholder:text-white/60 focus:border-white focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="feedback-email"
+                  className="text-xs font-medium text-white/80"
+                >
+                  Email Address
+                </label>
+
+                <input
+                  id="feedback-email"
+                  name="email"
+                  type="email"
+                  required
+                  maxLength={255}
+                  placeholder="you@company.com"
+                  className="mt-2 w-full rounded-xl border border-white/30 bg-white/15 px-5 py-3 text-sm text-white placeholder:text-white/60 focus:border-white focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* Feedback */}
+            <div>
+              <label
+                htmlFor="customer-feedback"
+                className="text-xs font-medium text-white/80"
+              >
+                Your Feedback
+              </label>
+
+              <textarea
+                id="customer-feedback"
+                name="feedback"
+                rows={5}
+                required
+                maxLength={1000}
+                placeholder="Tell us about your experience..."
+                className="mt-2 w-full resize-none rounded-xl border border-white/30 bg-white/15 px-5 py-3 text-sm text-white placeholder:text-white/60 focus:border-white focus:outline-none"
+              />
+            </div>
+
+            {/* Submit */}
+            <div className="flex justify-center pt-2">
+              <button
+                type="submit"
+                disabled={submitting}
+                className="rounded-full bg-ink px-8 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 disabled:opacity-70"
+              >
+                {submitting
+                  ? "Submitting…"
+                  : "Submit Feedback"}
+              </button>
+            </div>
+          </form>
         </motion.div>
       </div>
     </section>

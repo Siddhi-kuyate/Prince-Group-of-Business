@@ -1,25 +1,27 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, ChevronLeft, ChevronRight, Phone } from "lucide-react";
-import { heroSlides, stats } from "@/lib/site";
-import { Counter } from "./counter";
+import { ArrowRight } from "lucide-react";
+import { heroSlides } from "@/lib/site";
 
 export function Hero() {
   const [index, setIndex] = useState(0);
 
-  const go = useCallback((next: number) => {
-    setIndex(((next % heroSlides.length) + heroSlides.length) % heroSlides.length);
-  }, []);
-
   useEffect(() => {
-    const timer = setInterval(() => setIndex((i) => (i + 1) % heroSlides.length), 6500);
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % heroSlides.length);
+    }, 6500);
+
     return () => clearInterval(timer);
-  }, [index]);
+  }, []);
 
   const slide = heroSlides[index]!;
 
   return (
-    <section id="home" className="relative min-h-[100svh] overflow-hidden bg-ink">
+    <section
+      id="home"
+      className="relative min-h-[100svh] overflow-hidden bg-ink"
+    >
+      {/* Hero Background Image */}
       <AnimatePresence mode="sync">
         <motion.img
           key={index}
@@ -32,107 +34,84 @@ export function Hero() {
           initial={{ opacity: 0, scale: 1.08 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ opacity: { duration: 1 }, scale: { duration: 7, ease: "linear" } }}
+          transition={{
+            opacity: { duration: 1 },
+            scale: { duration: 7, ease: "linear" },
+          }}
         />
       </AnimatePresence>
 
+      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/25" />
+
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/50" />
 
-      <div className="section-shell relative flex min-h-[100svh] flex-col justify-center pt-28 pb-40 sm:pb-44">
+      {/* Hero Content */}
+      <div className="section-shell relative flex min-h-[100svh] flex-col justify-center pt-28 pb-32">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -18 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+            }}
             className="max-w-3xl"
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-[0.18em] text-white/90 uppercase backdrop-blur-md">
+            {/* Kicker */}
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur-md">
               {slide.kicker}
             </span>
-            <h1 className="mt-6 text-4xl leading-[1.05] font-bold text-white sm:text-5xl lg:text-6xl">
+
+            {/* Title */}
+            <h1 className="mt-6 text-4xl font-bold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
               {slide.title}
             </h1>
+
+            {/* Subtitle */}
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
               {slide.subtitle}
             </p>
+
+            {/* Hero Button */}
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="#contact"
+                href={slide.buttonHref}
                 className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
-                style={{ background: "var(--gradient-primary)" }}
+                style={{
+                  background: "var(--gradient-primary)",
+                }}
               >
-                Request a Quote
+                {slide.buttonText}
+
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-              <a
-                href="#products"
-                className="inline-flex items-center gap-2 rounded-full border border-white/35 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/15"
-              >
-                <Phone className="h-4 w-4" />
-                Explore Products
               </a>
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      <div className="absolute right-0 bottom-40 left-0 sm:bottom-44">
-        <div className="section-shell flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => go(index - 1)}
-            aria-label="Previous slide"
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/30 text-white transition-colors hover:bg-white/15"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => go(index + 1)}
-            aria-label="Next slide"
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/30 text-white transition-colors hover:bg-white/15"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-          <div className="ml-2 flex gap-2">
+      {/* Slide Dots */}
+      <div className="absolute bottom-8 left-0 right-0">
+        <div className="section-shell flex justify-center">
+          <div className="flex items-center gap-2">
             {heroSlides.map((s, i) => (
               <button
                 key={s.title}
                 type="button"
-                onClick={() => go(i)}
+                onClick={() => setIndex(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 aria-current={i === index}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === index ? "w-10 bg-white" : "w-4 bg-white/40 hover:bg-white/70"
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === index
+                    ? "w-10 bg-white"
+                    : "w-4 bg-white/40 hover:bg-white/70"
                 }`}
               />
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className="absolute inset-x-0 bottom-0">
-        <div className="section-shell pb-6">
-          <dl className="glass-dark grid grid-cols-2 gap-px overflow-hidden rounded-2xl md:grid-cols-4">
-            {stats.map((stat) => (
-              <div key={stat.label} className="px-5 py-6 text-center">
-                <dt className="sr-only">{stat.label}</dt>
-                <dd>
-                  <Counter
-                    value={stat.value}
-                    suffix={stat.suffix}
-                    className="block font-display text-3xl font-bold text-white sm:text-4xl"
-                  />
-                  <span className="mt-1 block text-[11px] font-medium tracking-[0.14em] text-white/70 uppercase sm:text-xs">
-                    {stat.label}
-                  </span>
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </div>
     </section>
