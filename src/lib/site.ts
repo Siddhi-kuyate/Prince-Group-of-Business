@@ -1,3 +1,4 @@
+
 import heroOne from "@/assets/hero-1.jpg";
 import heroTwo from "@/assets/hero-2.jpg";
 import heroThree from "@/assets/hero-3.jpg";
@@ -25,26 +26,17 @@ export const siteUrl = "https://www.princegroupbusiness.in";
 
 export const company = {
   name: "Prince Group of Business",
-
   tagline: "Crowning Success, Building Legacies.",
-
   email: "sales.pgbusiness@gmail.com",
-
   phone: "+91 82376 05344",
-
   phoneHref: "tel:+918237605344",
-
   whatsapp: "918237605344",
-
   address:
     "B-304, 3rd Floor, Jai Ganesh Vardhasht Society, Gandhi Nagar Road, Pimpri, Pune, Maharashtra, India",
-
   mapQuery:
     "B-304, 3rd Floor, Jai Ganesh Vardhasht Society, Gandhi Nagar Road, Pimpri, Pune, Maharashtra, India",
-
   mapDirectLink:
     "https://www.google.com/maps/search/?api=1&query=B-304%2C+3rd+Floor%2C+Jai+Ganesh+Vardhasht+Society%2C+Gandhi+Nagar+Road%2C+Pimpri%2C+Pune%2C+Maharashtra%2C+India",
-
   hours: "Monday - Saturday: 9:00 AM - 6:00 PM IST",
 };
 
@@ -74,14 +66,14 @@ export const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encode
 
 export const socialLinks = {
   instagram: "https://www.instagram.com/pg_businesses/",
-
   linkedin: "https://www.linkedin.com/company/prince-group-of-business/",
-
   facebook: "https://www.facebook.com/share/1DMrPZSBBP/",
 };
 
 /* =========================================================
    NAVIGATION
+   Products removed from the navigation.
+   The products data below remains available.
    ========================================================= */
 
 export const navLinks = [
@@ -92,10 +84,6 @@ export const navLinks = [
   {
     label: "Solutions",
     href: "/solutions",
-  },
-  {
-    label: "Products",
-    href: "/products",
   },
   {
     label: "Blogs",
@@ -126,7 +114,6 @@ export const heroSlides = [
     buttonText: "View Industries",
     buttonHref: "/industries",
   },
-
   {
     image: heroTwo,
     alt: "Dairy processing facility",
@@ -137,7 +124,6 @@ export const heroSlides = [
     buttonText: "View Services",
     buttonHref: "/solutions",
   },
-
   {
     image: heroThree,
     alt: "Pharmaceutical and beverage processing equipment",
@@ -226,6 +212,7 @@ export const solutions = [
 
 /* =========================================================
    PRODUCTS
+   Product data is preserved.
    ========================================================= */
 
 export const products = [
