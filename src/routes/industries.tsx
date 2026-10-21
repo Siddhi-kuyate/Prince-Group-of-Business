@@ -39,7 +39,7 @@ export const Route = createFileRoute("/industries")({
     links: [
       {
         rel: "canonical",
-        href: "https://www.princegroupbusiness.in/industries",
+        href: "https://www.princegroupofbusiness.in/industries",
       },
     ],
   }),

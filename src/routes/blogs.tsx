@@ -38,7 +38,7 @@ export const Route = createFileRoute("/blogs")({
     links: [
       {
         rel: "canonical",
-        href: "https://www.princegroupbusiness.in/blogs",
+        href: "https://www.princegroupofbusiness.in/blogs",
       },
     ],
   }),

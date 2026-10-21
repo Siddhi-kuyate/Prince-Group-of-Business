@@ -21,11 +21,11 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.princegroupbusiness.in/contact" },
+      { property: "og:url", content: "https://www.princegroupofbusiness.in/contact" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
 
-    links: [{ rel: "canonical", href: "https://www.princegroupbusiness.in/contact" }],
+    links: [{ rel: "canonical", href: "https://www.princegroupofbusiness.in/contact" }],
 
     scripts: [
       {
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/contact")({
           "@type": "LocalBusiness",
           name: company.name,
           description,
-          url: "https://www.princegroupbusiness.in/contact",
+          url: "https://www.princegroupofbusiness.in/contact",
           telephone: company.phone,
           email: company.email,
           openingHours: "Mo-Sa 09:00-18:00",

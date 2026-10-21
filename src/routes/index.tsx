@@ -28,14 +28,14 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.princegroupbusiness.in/" },
+      { property: "og:url", content: "https://www.princegroupofbusiness.in/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
 
     links: [
       {
         rel: "canonical",
-        href: "https://www.princegroupbusiness.in/",
+        href: "https://www.princegroupofbusiness.in/",
       },
     ],
 
@@ -52,7 +52,7 @@ export const Route = createFileRoute("/")({
           slogan: company.tagline,
           telephone: company.phone,
           email: company.email,
-          url: "https://www.princegroupbusiness.in",
+          url: "https://www.princegroupofbusiness.in",
 
           address: {
             "@type": "PostalAddress",

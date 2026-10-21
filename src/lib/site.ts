@@ -22,7 +22,7 @@ import indConstruction from "@/assets/ind-construction.jpg";
    COMPANY
    ========================================================= */
 
-export const siteUrl = "https://www.princegroupbusiness.in";
+export const siteUrl = "https://www.princegroupofbusiness.in";
 
 export const company = {
   name: "Prince Group of Business",

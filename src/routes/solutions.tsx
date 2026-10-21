@@ -35,7 +35,7 @@ export const Route = createFileRoute("/solutions")({
       },
       {
         property: "og:url",
-        content: "https://www.princegroupbusiness.in/solutions",
+        content: "https://www.princegroupofbusiness.in/solutions",
       },
       {
         name: "twitter:card",
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/solutions")({
     links: [
       {
         rel: "canonical",
-        href: "https://www.princegroupbusiness.in/solutions",
+        href: "https://www.princegroupofbusiness.in/solutions",
       },
     ],
 
