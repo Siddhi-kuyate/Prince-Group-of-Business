@@ -146,7 +146,7 @@ export function Header() {
           />
           <div className="hidden sm:block">
             <div className="font-sans text-xl font-extrabold uppercase tracking-wide text-white">
-              PRINCE GROUP
+              abc
             </div>
             <div className="font-sans text-s font-extrabold uppercase tracking-wide text-white">
               OF BUSINESS
